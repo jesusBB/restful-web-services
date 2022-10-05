@@ -3,11 +3,8 @@ package com.in28minutes.rest.webservices.restfulwebservices.user;
 import java.net.URI;
 import java.util.List;
 
-import com.in28minutes.rest.webservices.restfulwebservices.Exceptions.UserNotFoundException;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 @RestController
@@ -28,11 +25,11 @@ public class UserResource {
     // GET /users
     @GetMapping("/users/{id}")
     public User retrieveUser(@PathVariable int id) {
-        try {
+        //try {
             return service.findOne(id);
-        }catch (UserNotFoundException ex){
-            throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage());
-        }
+        //}catch (UserNotFoundException ex){
+         //   throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage());
+        //}
 
     }
 
