@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
-    public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request) {
+    public final ResponseEntity<ErrorDetails> handleAllExceptions(Exception ex, WebRequest request)  {
         ErrorDetails errorDetails = new ErrorDetails(LocalDateTime.now(), ex.getMessage(), request.getDescription(false)) ;
 
         return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -23,6 +23,13 @@ public class User {
         this.id = id;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public LocalDate getBirthDate() {
+        return birthDate;
+    }
 
     @Override
     public String toString() {

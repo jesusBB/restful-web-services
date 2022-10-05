@@ -15,4 +15,16 @@ public class ErrorDetails {
         this.details = details;
     }
 
+    public LocalDateTime getTimestamp() {
+        return timestamp;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public String getDetails() {
+        return details;
+    }
+
 }
