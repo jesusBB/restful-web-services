@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Predicate;
 
-import com.in28minutes.rest.webservices.restfulwebservices.Exceptions.UserNotFoundException;
+import com.in28minutes.rest.webservices.restfulwebservices.exceptions.UserNotFoundException;
 import org.springframework.stereotype.Component;
 
 @Component

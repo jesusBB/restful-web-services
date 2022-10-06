@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.Exceptions;
+package com.in28minutes.rest.webservices.restfulwebservices.exceptions;
 
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
