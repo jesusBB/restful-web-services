@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) Jaguar Land Rover Ltd 2022. All rights reserved
+ */
+
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
 import java.time.LocalDate;
@@ -9,7 +13,7 @@ import com.in28minutes.rest.webservices.restfulwebservices.exceptions.UserNotFou
 import org.springframework.stereotype.Component;
 
 @Component
-public class UserDaoService {
+public class UserDaoService { 
     // JPA/Hibernate > Database
     // UserDaoService > Static List
 
