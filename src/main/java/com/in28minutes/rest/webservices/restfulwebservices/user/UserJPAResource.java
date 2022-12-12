@@ -8,11 +8,13 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 import com.in28minutes.rest.webservices.restfulwebservices.exceptions.UserNotFoundException;
+import com.in28minutes.rest.webservices.restfulwebservices.repositories.PostRepository;
 import com.in28minutes.rest.webservices.restfulwebservices.repositories.UserRepository;
 import jakarta.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import javax.swing.text.html.Option;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.mvc.WebMvcLinkBuilder;
 import org.springframework.http.ResponseEntity;
@@ -28,13 +30,14 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 @RestController
 public class UserJPAResource {
 
-    private final UserDaoService service;
+  //  private final UserDaoService service;
 
     private UserRepository repository;
+    private PostRepository postRepository;
 
-    public UserJPAResource(UserDaoService service, UserRepository repository) {
-        this.service = service;
+    public UserJPAResource(UserRepository repository, PostRepository postRepository) {
         this.repository = repository;
+        this.postRepository = postRepository;
     }
 
     // GET /users
@@ -81,4 +84,21 @@ public class UserJPAResource {
 
        return user.get().getPosts();
     }
+
+    @PostMapping("/jpa/users/{id}/posts")
+    public ResponseEntity<Post> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
+        Optional<User> user = repository.findById(id);
+
+        if(user.isEmpty())
+            throw new UserNotFoundException("id: " + id);
+
+        post.setUser(user.get());
+
+        Post savedPost = postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(savedPost.getId()).toUri();
+        System.out.println("URI:" + location.toString());
+        return ResponseEntity.created(location).build();
+    }
+
 }

@@ -12,10 +12,10 @@ insert into USER_DETAILS(id, birth_date, name)
 VALUES(10004, current_date(), 'Pepe');
 
 insert into POST(id, description, user_id)
-VALUES(1, 'Message 1', 10001);
+VALUES(20001, 'Message 1', 10001);
 insert into POST(id, description, user_id)
-VALUES(2, 'Message 2', 10001);
+VALUES(20002, 'Message 2', 10001);
 insert into POST(id, description, user_id)
-VALUES(3, 'Message 1 user 2', 10002);
+VALUES(20003, 'Message 1 user 2', 10002);
 insert into POST(id, description, user_id)
-VALUES(4, 'Message 1 user 3', 10003);
+VALUES(20004, 'Message 1 user 3', 10003);
